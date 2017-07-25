@@ -48,10 +48,8 @@ class GoodreadsReviewsWaybackSpider(BaseSpider):
         item['entire_review'] = response.css('div.review').extract()
         item['reviewer_names'] = response.css('div.reviewHeader > a.user::text').extract()
         item['reviewer_urls'] = response.css('div.reviewHeader > a.user::attr(href)').extract()
-        count = 0
-        for a in item['reviewer_urls']:
-            item['reviewer_urls'][count] = response.urljoin(a)
-            count += 1
+        for i, item_url in enumerate(item['reviewer_urls']):
+            item['reviewer_urls'][i] = response.urljoin(item_url)
         item['review_bodies'] = response.css('div.reviewText > span > span:last-of-type').extract()
         item['ratings'] = response.css('span.staticStars').extract()
         item['reviews_likes'] = response.css('span.likesCount::text').extract()
