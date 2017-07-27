@@ -2,6 +2,7 @@ from __future__ import absolute_import
 from scrapy.spider import BaseSpider
 from scrapy import Request
 from goodreadsreviewswayback.items import GoodreadsReviewsWaybackItem
+import os
 import time
 try:
     # Python 2.6-2.7
@@ -15,10 +16,11 @@ class GoodreadsReviewsWaybackSpider(BaseSpider):
     name = "goodreadsreviewswayback"
     allowed_domains = ["archive.org"]
 
+    path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # go up three file directory levels to main repo folder
     infile = "wayback_goodreads_urls.txt"
 
     start_urls = []
-    with open(infile) as f:
+    with open(os.path.join(path, infile)) as f:
         goodreadsurls = f.read().splitlines()
     for goodreadsurl in goodreadsurls:
         start_urls.append(goodreadsurl)
