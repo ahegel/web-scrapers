@@ -1,6 +1,6 @@
-# web-scrapers
+# Web Scrapers
 
-Programs to scrape websites using the scrapy package.
+Programs to scrape websites using the scrapy package in Python.
 
 ## goodreadsreviewswayback
 
