@@ -16,7 +16,8 @@ class GoodreadsReviewsWaybackSpider(BaseSpider):
     name = "goodreadsreviewswayback"
     allowed_domains = ["archive.org"]
 
-    path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # go up three file directory levels to main repo folder
+    # go up three file directory levels to main repo folder for path
+    path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
     infile = "wayback_goodreads_urls.txt"
 
     start_urls = []
